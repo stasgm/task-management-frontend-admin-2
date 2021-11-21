@@ -35,12 +35,12 @@ export const protectedRoutes = [
     path: '/app',
     element: <App />,
     children: [
-      { path: '/discussions/*', element: <DiscussionsRoutes /> },
-      { path: '/tasks/*', element: <TasksRoutes /> },
-      { path: '/users', element: <Users /> },
-      { path: '/profile', element: <Profile /> },
-      { path: '/', element: <Dashboard /> },
-      { path: '*', element: <Navigate to="." /> },
+      { path: '/app/discussions/*', element: <DiscussionsRoutes /> },
+      { path: '/app/tasks/*', element: <TasksRoutes /> },
+      { path: '/app/users', element: <Users /> },
+      { path: '/app/profile', element: <Profile /> },
+      { path: '/app/', element: <Dashboard /> },
+      { path: '/app/*', element: <Navigate to="." /> },
     ],
   },
 ];
