@@ -1,12 +1,12 @@
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   UserIcon,
-  FolderIcon,
-  CheckIcon,
   HomeIcon,
   MenuAlt2Icon,
   UsersIcon,
   XIcon,
+  ClipboardListIcon,
+  AnnotationIcon,
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import * as React from 'react';
@@ -26,8 +26,8 @@ const SideNavigation = () => {
   const { checkAccess } = useAuthorization();
   const navigation = [
     { name: 'Dashboard', to: '.', icon: HomeIcon },
-    { name: 'Discussions', to: './discussions', icon: FolderIcon },
-    { name: 'Tasks', to: './tasks', icon: CheckIcon },
+    { name: 'Discussions', to: './discussions', icon: AnnotationIcon },
+    { name: 'Tasks', to: './tasks', icon: ClipboardListIcon },
     checkAccess({ allowedRoles: [ROLES.admin] }) && {
       name: 'Users',
       to: './users',
