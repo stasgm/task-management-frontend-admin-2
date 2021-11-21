@@ -5,14 +5,12 @@ import { UpdateProfileDTO, useUpdateProfile } from '../api/updateProfile';
 
 import { Button } from '@/components/Elements';
 import { Form, FormDrawer, InputField } from '@/components/Form';
-import { TextAreaField } from '@/components/Form/TextareaField';
 import { useAuth } from '@/lib/auth';
 
 const schema = z.object({
   username: z.string().min(1, 'Required'),
   firstName: z.string(),
   lastName: z.string(),
-  bio: z.string(),
 });
 
 export const UpdateProfile = () => {
@@ -49,7 +47,6 @@ export const UpdateProfile = () => {
             firstName: user?.firstName,
             lastName: user?.lastName,
             username: user?.username,
-            bio: user?.bio,
           },
         }}
         schema={schema}
@@ -71,12 +68,6 @@ export const UpdateProfile = () => {
               type="text"
               error={formState.errors['username']}
               registration={register('username')}
-            />
-
-            <TextAreaField
-              label="Bio"
-              error={formState.errors['bio']}
-              registration={register('bio')}
             />
           </>
         )}

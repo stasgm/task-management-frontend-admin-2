@@ -1,5 +1,9 @@
+// import { Navigate, useRoutes } from 'react-router-dom';
 import { Navigate, useRoutes } from 'react-router-dom';
 
+import { NotFound } from '../features/misc';
+
+import App from './app';
 import { protectedRoutes } from './protected';
 import { publicRoutes } from './public';
 
@@ -7,15 +11,30 @@ import { publicRoutes } from './public';
 import { useAuth } from '@/lib/auth';
 
 export const AppRoutes = () => {
-  const auth = useAuth();
+  const { user } = useAuth();
+  const isLoggedIn = !!user;
 
-  // const commonRoutes = [{ path: '/', element: <Landing /> }];
-  const elements = auth.user ? <Navigate to={'/app'} /> : <Navigate to={'/auth/login'} />;
-  const commonRoutes = [{ path: '/', element: elements }];
-
-  const routes = auth.user ? protectedRoutes : publicRoutes;
+  // const elements = isLoggedIn ? <App /> : <Navigate to={'./auth/login'} />;
+  const commonRoutes = [
+    {
+      path: '/',
+      // element: elements,
+      children: [
+        {
+          path: '/',
+          element: isLoggedIn ? <App /> : <Navigate to={'./auth/login'} />,
+        },
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
+    },
+  ];
+  const routes = isLoggedIn ? protectedRoutes : publicRoutes;
 
   const element = useRoutes([...routes, ...commonRoutes]);
+  // const element = useRoutes([...routes]);
 
   return <>{element}</>;
 };

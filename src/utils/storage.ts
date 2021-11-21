@@ -1,4 +1,4 @@
-const storagePrefix = 'bulletproof_react_';
+const storagePrefix = 'newbor_project_react_';
 
 const storage = {
   getToken: (): string => {

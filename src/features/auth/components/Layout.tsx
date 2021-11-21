@@ -20,10 +20,8 @@ export const Layout = ({ children, title }: LayoutProps) => {
               <img className="h-24 w-auto" src={logo} alt="Workflow" />
             </Link>
           </div>
-
           <h2 className="mt-3 text-center text-3xl font-extrabold text-gray-900">{title}</h2>
         </div>
-
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">{children}</div>
         </div>

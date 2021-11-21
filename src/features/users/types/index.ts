@@ -6,5 +6,4 @@ export type User = {
   username: string;
   role: 'admin' | 'user';
   teamId?: string;
-  bio?: string;
 } & BaseEntity;
