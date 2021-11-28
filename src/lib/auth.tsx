@@ -21,8 +21,12 @@ async function handleUserResponse(data: UserResponse) {
 
 async function loadUser() {
   if (storage.getToken()) {
-    const data = await getUser();
-    return data;
+    try {
+      const data = await getUser();
+      return data;
+    } catch (err) {
+      return null;
+    }
   }
   return null;
 }

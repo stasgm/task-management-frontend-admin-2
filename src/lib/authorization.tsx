@@ -18,7 +18,7 @@ export const POLICIES = {
       return true;
     }
 
-    if (user.role === ROLES.user && comment.authorId === user.id) {
+    if (user.role === ROLES.user && comment.userId === user.id) {
       return true;
     }
 

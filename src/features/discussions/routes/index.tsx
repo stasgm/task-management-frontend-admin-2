@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Discussion } from './Discussion';
-import { Discussions } from './Discussions';
+import { Discussion } from '../components/Discussion';
+import { Discussions } from '../components/Discussions';
 
 export const DiscussionsRoutes = () => {
   return (

@@ -14,10 +14,6 @@ type UseTaskOptions = {
   config?: QueryConfig<typeof getTask>;
 };
 
-export const useTask = ({ taskId, config }: UseTaskOptions) => {
-  return useQuery({
-    ...config,
-    // queryKey: ['task', taskId],
-    queryFn: () => getTask({ taskId }),
-  });
+export const useTask = ({ taskId }: UseTaskOptions) => {
+  return useQuery(['task', taskId], () => getTask({ taskId }));
 };

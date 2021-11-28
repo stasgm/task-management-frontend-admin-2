@@ -41,7 +41,9 @@
     "zustand": "^3.5.2"
   },
   "scripts": {
-    "start": "PORT=3030 craco start",
+    "start:local": "cross-env REACT_APP_STAGE=LOCAL PORT=3030 craco start",
+    "start:dev": "cross-env PORT=3030 craco start",
+    "start:prod": "cross-env PORT=3030 craco start",
     "start:cli": "cross-env BROWSER=none craco start",
     "build": "craco build",
     "test": "is-ci \"test:coverage\" \"test:watch\"",

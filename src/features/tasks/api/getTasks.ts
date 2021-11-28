@@ -13,10 +13,7 @@ type UseTasksOptions = {
   config?: QueryConfig<typeof getTasks>;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useTasks = ({ config }: UseTasksOptions = {}) => {
-  return useQuery({
-    ...config,
-    // queryKey: ['tasks'],
-    queryFn: () => getTasks(),
-  });
+  return useQuery(['tasks'], () => getTasks());
 };

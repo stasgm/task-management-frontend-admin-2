@@ -42,11 +42,13 @@ const SideNavigation = () => {
           end={index === 0}
           key={item.name}
           to={item.to}
-          // activeClassName="bg-gray-900 text-white"
-          className={clsx(
-            'text-gray-300 hover:bg-gray-700 hover:text-white',
-            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-          )}
+          className={(item) =>
+            clsx(
+              `${item.isActive ? 'bg-gray-900 text-white' : 'text-gray-300'}`,
+              'hover:bg-gray-700 hover:text-white',
+              'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+            )
+          }
         >
           <item.icon
             className={clsx(
@@ -87,7 +89,7 @@ const UserNavigation = () => {
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className="max-w-xs  bg-gray-200 p-2 flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <Menu.Button className="max-w-xs bg-gray-200 p-2 flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               <span className="sr-only">Open user menu</span>
               <UserIcon className="h-8 w-8 rounded-full" />
             </Menu.Button>
@@ -210,7 +212,7 @@ const Sidebar = () => {
             <Logo />
           </div>
           <div className="flex-1 flex flex-col overflow-y-auto">
-            <nav className="flex-1 px-2 py-4 bg-gray-800 space-y-1">
+            <nav className="flex-1 px-2 py-3 bg-gray-800 space-y-1">
               <SideNavigation />
             </nav>
           </div>

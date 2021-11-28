@@ -4,7 +4,7 @@ import { Discussion } from '../types';
 import { DeleteDiscussion } from './DeleteDiscussion';
 
 import { Table, Spinner, Link } from '@/components/Elements';
-import { formatDate } from '@/utils/format';
+import { formatDateShort } from '@/utils/format';
 
 export const DiscussionsList = () => {
   const discussionsQuery = useDiscussions();
@@ -26,19 +26,29 @@ export const DiscussionsList = () => {
         {
           title: 'Title',
           field: 'title',
+          Cell({ entry: { id, title } }) {
+            return <Link to={`./${id}`}>{title}</Link>;
+          },
         },
         {
           title: 'Created At',
           field: 'createdAt',
           Cell({ entry: { createdAt } }) {
-            return <span>{formatDate(createdAt)}</span>;
+            return <span>{formatDateShort(createdAt)}</span>;
           },
         },
         {
-          title: '',
-          field: 'id',
-          Cell({ entry: { id } }) {
-            return <Link to={`./${id}`}>View</Link>;
+          title: 'Updated At',
+          field: 'updatedAt',
+          Cell({ entry: { updatedAt } }) {
+            return <span>{formatDateShort(updatedAt)}</span>;
+          },
+        },
+        {
+          title: 'Status',
+          field: 'status',
+          Cell({ entry: { status } }) {
+            return <span>{status}</span>;
           },
         },
         {

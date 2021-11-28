@@ -21,14 +21,19 @@ export type NotificationProps = {
     type: keyof typeof icons;
     title: string;
     message?: string;
+    timeout?: number;
   };
   onDismiss: (id: string) => void;
 };
 
+const DEFAULT_NOTIFICATION_TIMEOUT = 3000;
+
 export const Notification = ({
-  notification: { id, type, title, message },
+  notification: { id, type, title, message, timeout },
   onDismiss,
 }: NotificationProps) => {
+  setTimeout(() => onDismiss(id), timeout || DEFAULT_NOTIFICATION_TIMEOUT);
+
   return (
     <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
       <Transition

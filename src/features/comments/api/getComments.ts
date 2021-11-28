@@ -18,10 +18,13 @@ type UseCommentsOptions = {
   config?: QueryConfig<typeof getComments>;
 };
 
-export const useComments = ({ discussionId, config }: UseCommentsOptions) => {
-  return useQuery({
-    ...config,
-    // queryKey: ['comments', discussionId],
-    queryFn: () => getComments({ discussionId }),
-  });
+export const useComments = ({ discussionId }: UseCommentsOptions) => {
+  return useQuery(['discussionId', discussionId], () => getComments({ discussionId }));
+
+  // return a;
+  // return useQuery({
+  //   ...config,
+  //   // queryKey: ['comments', discussionId],
+  //   queryFn: () => getComments({ discussionId }),
+  // });
 };

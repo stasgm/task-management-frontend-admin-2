@@ -13,10 +13,12 @@ type UseDiscussionsOptions = {
   config?: QueryConfig<typeof getDiscussions>;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useDiscussions = ({ config }: UseDiscussionsOptions = {}) => {
-  return useQuery({
-    ...config,
-    // queryKey: ['discussions'],
-    queryFn: () => getDiscussions(),
-  });
+  return useQuery(['discussions'], getDiscussions);
+  // return useQuery({
+  //   ...config,
+  //   // queryKey: ['discussions'],
+  //   queryFn: () => getDiscussions(),
+  // });
 };
